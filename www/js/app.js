@@ -15,11 +15,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
+
+        var permissions = cordova.plugins.permissions;
+
+        var permList = [
+          permissions.CAMERA, permissions.MICROPHONE, permissions.MODIFY_AUDIO_SETTINGS, permissions.RECORD_AUDIO, permissions.CAPTURE_VIDEO_OUTPUT, permissions.CAPTURE_SECURE_VIDEO_OUTPUT, permissions.CAPTURE_AUDIO_OUTPUT
+        ];
+
+        var noop = function(){};
+
+        permissions.requestPermissions(permList, noop, noop);
+
+        permissions.hasPermission(permissions.CAMERA, function( status ){
+          if ( status.hasPermission ) {
+            console.log("Yes :D ");
+          }
+          else {
+            console.warn("No :( ");
+          }
+        });
+
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
   });
 })
 

@@ -1,11 +1,36 @@
 {
-  "name": "twilio-app",
-  "version": "0.0.1",
-  "description": "An Ionic project",
-  "devDependencies": {
-    "gulp": "^3.5.6",
-    "gulp-clean-css": "^3.7.0",
-    "gulp-rename": "^1.2.0",
-    "gulp-sass": "^3.1.0"
-  }
+    "name": "twilio-app",
+    "version": "0.0.1",
+    "description": "An Ionic project",
+    "devDependencies": {
+        "gulp": "^3.5.6",
+        "gulp-clean-css": "^3.7.0",
+        "gulp-rename": "^1.2.0",
+        "gulp-sass": "^3.1.0"
+    },
+    "dependencies": {
+        "cordova-android": "^6.2.3",
+        "cordova-browser": "^4.1.0",
+        "cordova-plugin-android-permissions": "^1.0.0",
+        "cordova-plugin-device": "^1.1.4",
+        "cordova-plugin-splashscreen": "^4.0.3",
+        "cordova-plugin-statusbar": "^2.2.1",
+        "cordova-plugin-whitelist": "git+https://github.com/apache/cordova-plugin-whitelist.git",
+        "ionic-plugin-keyboard": "^2.2.1",
+        "twilio-video": "^1.4.0"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-device": {},
+            "cordova-plugin-splashscreen": {},
+            "cordova-plugin-statusbar": {},
+            "cordova-plugin-whitelist": {},
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-android-permissions": {}
+        },
+        "platforms": [
+            "android",
+            "browser"
+        ]
+    }
 }
