@@ -1,0 +1,51 @@
+How Twilio works:
+
+	- General flow: https://www.twilio.com/video
+
+	- Tokens: https://www.twilio.com/docs/api/video/user-identity-access-tokens
+
+	- Functions and how they fit together:
+
+		https://www.twilio.com/docs/api/video/getting-started
+
+
+Resources:
+
+	- Your Twilio Console: https://www.twilio.com/console
+
+	- I copied most code from: https://stackoverflow.com/questions/44661361/twilio-programmable-video-js-ionic/44708803#44708803
+
+		- He fixes permission problems here https://forum.ionicframework.com/t/twilio-programmable-video-and-ionic-html5-webrtc/95559
+
+Demo:
+
+	1) Grab an access token from: https://www.twilio.com/console/video/runtime/testing-tools
+
+		- Give any name
+
+	2) In controller.js around Line 52, replace the token with the above token
+
+	3) Run "ionic cordova run android" with the android phone connected
+
+	4) Grab a different access token with A DIFFERENT NAME from the above link
+
+	5) In controller.js, replace the old token with the new one
+
+	6) Run "ionic cordova run browser"
+
+	7) Both should connect
+
+
+Problems encountered:
+
+	1) Adding a 3rd party library: I used "bower install..." to install "twilio-video". This installed the files to /lib, and I was able to run a <script> in index.html to load that file. To access the library, use "Twilio.Video..."
+
+	2) Not sure if this was a problem but I whitelisted everything using the whitelist plugin
+
+	3) To fix the getUserMedia bug on Android, I added a few lines in app.js and requested permission to use the camera, audio etc. But this wasn't fully fixed until I went into the AndroidManifest.xml and added multiple <uses-permission ...> lines.
+
+		- https://stackoverflow.com/questions/28934014/getusermedia-android-webview-ionic/44808477#44808477
+
+		- https://www.npmjs.com/package/cordova-plugin-android-permissions
+
+	4) If one person goes into another room, and another goes into the room, the first person's video drops: Make sure that both people have different access tokens with different names (need to check if the name needs to be different, but tokens were definitely different)
